@@ -1,0 +1,34 @@
+Header {
+    background-color: red;
+}
+
+#FlexContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: solid 1px;
+}
+
+#FlexContainer > div {
+    width: 100%;
+    line-height: 35px;
+    font-size: 1rem;
+    background-color: #f1f1f1;
+    margin: 2px;
+}
+
+#HeaderMenu {
+    text-align: left;
+}
+
+#HeaderTitle {
+}
+
+#HeaderLogin {
+    text-align: right;
+}
+
+#LoginContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 2px;
+}
