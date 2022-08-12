@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/Header";
 import Timer from "./components/Timer";
 import Goal from "./components/Goal";
+import Task from "./components/Task";
 import React, {useState, useEffect} from 'react';
 
 function App() {
@@ -14,9 +15,11 @@ function App() {
             <Header
             />
             <div id="Content">
-                <Timer time={DEFAULT_TIME} />
+                <Timer time={DEFAULT_TIME}/>
                 <hr/>
-                <Goal />
+                <Goal/>
+                <hr/>
+                <Task/>
             </div>
             {/*<header className="App-header">*/}
             {/*<img src={logo} className="App-logo" alt="logo" />*/}
