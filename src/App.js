@@ -1,11 +1,20 @@
 // import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
+import Timer from "./components/Timer";
+import React, {useState, useEffect} from 'react';
 
 function App() {
+    // const DEFAULT_TIME = 25 * 60;
+    const DEFAULT_TIME = 1;
+
     return (
         <div className="App">
-            <Header />
+            <Header
+            />
+            <Timer
+                time={DEFAULT_TIME}
+            />
             {/*<header className="App-header">*/}
             {/*<img src={logo} className="App-logo" alt="logo" />*/}
             {/*<p>*/}

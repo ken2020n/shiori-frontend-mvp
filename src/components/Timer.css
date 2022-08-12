@@ -1,0 +1,11 @@
+#TimerContainer {
+    background-color: red;
+    height: 300px;
+}
+
+#Timer {
+    background-color: blue;
+    margin: 10px;
+    line-height: 30px;
+    font-size: 5rem;
+}
