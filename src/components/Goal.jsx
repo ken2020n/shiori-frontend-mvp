@@ -4,6 +4,7 @@ import {Stack, Button, Icon, TextField} from '@mui/material';
 require('./Goal.css');
 
 export default function Goal() {
+
     const [goal, setGoal] = useState("");
     const handleCreateGoal = () => {
         console.log("goal: ", goal);

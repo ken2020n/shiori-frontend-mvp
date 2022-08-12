@@ -3,35 +3,27 @@ import {Box, List, ListItemButton, ListItemText, IconButton, DeleteIcon} from '@
 
 require('./Task.css');
 
-export default function Goal() {
+export default function Task({goals}) {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
-        console.log("Index: ", selectedIndex);
     };
 
-    const taskList = [
-        {goalId: 11, goalTitle: "Goal 1", taskCounter: 1},
-        {goalId: 12, goalTitle: "Goal 2", taskCounter: 2},
-        {goalId: 13, goalTitle: "Goal 3", taskCounter: 3}
-    ];
-
-    return (
+    return goals ? (
         <Box sx={{width: '100%'}}>
             <List>
                 {
-                    taskList.map(el =>
+                    goals.map(el =>
                         <ListItemButton
                             divider={true}
-                            selected={selectedIndex === el.goalId}
-                            onClick={(event) => handleListItemClick(event, el.goalId)}
+                            selected={selectedIndex === el.id}
+                            onClick={(event) => handleListItemClick(event, el.id)}
                         >
-                            <ListItemText primary={el.goalTitle}/>
-                            <ListItemText secondary={el.taskCounter}/>
+                            <ListItemText primary={el.title}/>
                         </ListItemButton>
                     )
                 }
             </List>
         </Box>
-    );
+    ) : <></>;
 }

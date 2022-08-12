@@ -22,6 +22,7 @@ export default function Timer({time}) {
         setReload(false);
     }, [reload]);
 
+
     const {
         seconds,
         minutes,
@@ -66,7 +67,6 @@ export default function Timer({time}) {
 
             <div style={{textAlign: 'center'}}>
                 <h1>react-timer-hook </h1>
-                <p>Timer Demo</p>
                 <div style={{fontSize: '100px'}}>
                     <span>{minutes}</span>:<span>{seconds}</span>
                 </div>

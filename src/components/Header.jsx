@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonIcon from '@mui/icons-material/Person';
@@ -6,12 +6,21 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import {Menu, TextField, Alert, Collapse, IconButton, Button, Link} from "@mui/material";
 
+import {
+    // register,
+    login,
+    getGoals
+} from "../api/api";
+
 require('./Header.css');
 
-export default function Header() {
+export default function Header({setUser}) {
 
+    // TextField
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    // Alert
     const [open2, setOpen] = React.useState(true);
 
     const handleMenuClick = () => {
@@ -22,7 +31,23 @@ export default function Header() {
         console.log("login");
         console.log("email: ", email);
         console.log("password: ", password);
-        setOpen(true);
+
+        getLoginResult();
+
+        // register or error
+        // setOpen(true);
+    };
+
+    // API
+    const getLoginResult = async () => {
+        const loginResult = await login(email, password);
+        if (loginResult.status === 200) {
+            setUser(loginResult.data)
+            setOpen(false);
+
+        } else {
+            setOpen(true);
+        }
     };
 
     // Menu
@@ -97,12 +122,12 @@ export default function Header() {
                                     setOpen(false);
                                 }}
                             >
-                                <CloseIcon fontSize="inherit" />
+                                <CloseIcon fontSize="inherit"/>
                             </IconButton>
                         }
-                        sx={{ mb: 2 }}
+                        sx={{mb: 2}}
                     >
-                        Close me!
+                        Login failed!
                     </Alert>
                 </Collapse>
 
