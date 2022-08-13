@@ -11,6 +11,10 @@ export default function Task({goals, setSelectedGoalId}) {
         setSelectedGoalId(index);
     };
 
+    const handleListItemDoubleClick = (event, index) => {
+        console.log("DOUBLE CLICK!!");
+    };
+
     return goals ? (
         <Box sx={{width: '100%'}}>
             <List>
@@ -20,6 +24,7 @@ export default function Task({goals, setSelectedGoalId}) {
                             divider={true}
                             selected={selectedIndex === el.id}
                             onClick={(event) => handleListItemClick(event, el.id)}
+                            onDoubleClick={(event) => handleListItemDoubleClick(event, el.id)}
                         >
                             <ListItemText primary={el.title}/>
                         </ListItemButton>
