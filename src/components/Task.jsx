@@ -32,5 +32,5 @@ export default function Task({goals, setSelectedGoalId}) {
                 }
             </List>
         </Box>
-    ) : <></>;
+    ) : null;
 }

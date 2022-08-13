@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useTimer} from 'react-timer-hook';
-import {Alert, IconButton, Collapse} from '@mui/material';
+import {Alert, Button, Stack, IconButton, Collapse} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function Timer({time, selectedGoalTitle}) {
@@ -16,7 +16,7 @@ export default function Timer({time, selectedGoalTitle}) {
     const [reload, setReload] = useState();
 
     useEffect(() => {
-        if(!reload) {
+        if (!reload) {
             return;
         }
         console.log("Timer reload")
@@ -75,19 +75,24 @@ export default function Timer({time, selectedGoalTitle}) {
                 <div style={{fontSize: '100px'}}>
                     <span>{minutes}</span>:<span>{seconds}</span>
                 </div>
-                <p>{isRunning ? 'Running' : 'Not running'}</p>
-                <button onClick={start}>Start</button>
-                <button onClick={pause}>Pause</button>
-                <button onClick={resume}>Resume</button>
-                <button onClick={() => {
+                {/*<p>{isRunning ? 'Running' : 'Not running'}</p>*/}
+                {/*<button onClick={start}>Start</button>*/}
+                {/*<p>{isRunning ? : null}</p>*/}
+                <div>
+                    <Stack spacing={2} direction="row" justifyContent="center">
+                        <Button variant="contained" onClick={pause}>Pause</Button>
+                        <Button variant="contained" onClick={resume}>Resume</Button>
+                        <Button variant="contained"
+                                onClick={() => {
+                                    setOpen(false);
 
-                    setOpen(false);
-
-                    const date = new Date();
-                    date.setSeconds(date.getSeconds() + time);
-                    restart(date)
-                }}>Restart
-                </button>
+                                    const date = new Date();
+                                    date.setSeconds(date.getSeconds() + time);
+                                    restart(date)
+                                }}>Restart
+                        </Button>
+                    </Stack>
+                </div>
             </div>
         </div>
     );

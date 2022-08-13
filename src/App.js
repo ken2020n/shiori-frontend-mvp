@@ -48,7 +48,10 @@ function App() {
             <div id="Content">
                 <Timer time={DEFAULT_TIME} selectedGoalTitle={selectedGoalTitle}/>
                 <hr/>
-                <Goal/>
+                <Goal
+                    user={user}
+                    setGoals={setGoals}
+                />
                 <hr/>
                 <Task
                     goals={goals}

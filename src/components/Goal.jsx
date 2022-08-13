@@ -1,13 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import {Stack, Button, Icon, TextField} from '@mui/material';
+import {
+    createGoal, getGoals
+} from "../api/api";
 
 require('./Goal.css');
 
-export default function Goal() {
+export default function Goal({user, setGoals}) {
 
-    const [goal, setGoal] = useState("");
+    const [goalTitle, setGoalTitle] = useState("");
     const handleCreateGoal = () => {
-        console.log("goal: ", goal);
+        if(!user || !goalTitle) {
+            return;
+        }
+
+        console.log("user: ", user);
+        console.log("goal: ", goalTitle);
+
+        createGoal(user.id, goalTitle).then(res => {
+            if (res.status === 200) {
+                console.log(res.data);
+                setGoals(res.data);
+            }
+        });
     }
 
     return (
@@ -18,7 +33,7 @@ export default function Goal() {
                     id=""
                     label="Goal"
                     variant="outlined"
-                    onChange={(event) => setGoal(event.target.value)}
+                    onChange={(event) => setGoalTitle(event.target.value)}
                 />
                 <Button
                     variant="contained"
