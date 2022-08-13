@@ -37,10 +37,16 @@ function App() {
         if (!goals || !selectedGoalId) {
             return;
         }
-        console.log(goals);
         console.log(selectedGoalId);
-        let goalTitle = goals.filter(el => el.goal_id === selectedGoalId);
-        setSelectedGoalTitle(goalTitle);
+        let title;
+        goals.forEach(el => {
+            if(el.id === selectedGoalId) {
+                title = el.title;
+            }
+        })
+        console.log(title);
+        setSelectedGoalTitle(title);
+
     }, [selectedGoalId]);
 
     return (
@@ -53,7 +59,8 @@ function App() {
                 <Timer
                     time={DEFAULT_TIME}
                     selectedGoalId={selectedGoalId}
-                    // selectedGoalTitle={selectedGoalTitle}
+                    goals={goals}
+                    selectedGoalTitle={selectedGoalTitle}
                 />
                 <hr/>
                 <Goal

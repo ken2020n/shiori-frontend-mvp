@@ -12,6 +12,7 @@ require('./Timer.css');
 export default function Timer({
                                   time,
                                   selectedGoalId,
+                                  goals,
                                   selectedGoalTitle
                               }) {
 
@@ -54,7 +55,8 @@ export default function Timer({
     const handleTimeExpired = () => {
         console.log("onExpired")
         setOpen(true);
-        const createTaskResult = createTask(selectedGoalId, selectedGoalTitle, time);
+
+        const createTaskResult = createTask(selectedGoalId, "", time);
         createTaskResult.then((res) => {
             if (res.status) {
                 console.log("200 OK");

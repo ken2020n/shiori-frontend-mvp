@@ -7,9 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {Menu, TextField, Alert, Collapse, IconButton, Button, Link} from "@mui/material";
 
 import {
-    // register,
     login,
-    getGoals
 } from "../api/api";
 
 require('./Header.css');
