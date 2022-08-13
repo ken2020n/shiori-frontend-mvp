@@ -4,7 +4,7 @@ import axios from "axios";
 const API_HOST_URL = "https://shiori-mvp.herokuapp.com";
 
 const login = async (email, password) => {
-    console.log("❤️", API_HOST_URL);
+    // console.log("❤️", API_HOST_URL);
     try {
         return await axios.post(`${API_HOST_URL}/user/login`, {
             "email": email,
@@ -55,10 +55,19 @@ const createTask = async (goalId, title, seconds) => {
     }
 }
 
+const getTasks = async (goalId) => {
+    try {
+        return await axios.get(`${API_HOST_URL}/tasks/${goalId}`)
+    } catch (err) {
+        return err.response;
+    }
+}
+
 export {
     login,
     createGoal,
     getGoals,
     createTask,
-    deleteGoal
+    deleteGoal,
+    getTasks
 };

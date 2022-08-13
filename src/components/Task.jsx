@@ -9,13 +9,14 @@ import {
     DialogActions,
     DialogTitle,
     Button,
+    Alert,
     Dialog,
     DialogContentText
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import {
-    deleteGoal, getGoals
+    deleteGoal, getGoals, getTasks
 } from "../api/api";
 
 
@@ -39,9 +40,14 @@ export default function Task({goals, setSelectedGoalId, user, setGoals}) {
         setSelectedGoalId(index);
     };
 
+
     const handleListItemDoubleClick = (event, id) => {
         console.log("DOUBLE CLICK!!");
         console.log(id);
+        // get tasks
+        getTasks(id).then(el => {
+            console.log("❤️Tasks: ", el.data);
+        })
     };
 
     const handleDeleteClick = (event, id) => {
