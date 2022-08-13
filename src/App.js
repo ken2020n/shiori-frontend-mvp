@@ -14,7 +14,8 @@ function App() {
 
     const [user, setUser] = useState();
     const [goals, setGoals] = useState();
-    const [selectedGoal, setSelectedGoal] = useState();
+    const [selectedGoalId, setSelectedGoalId] = useState();
+    const [selectedGoalTitle, setSelectedGoalTitle] = useState();
 
     // user login
     useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
             return;
         }
         getGoals(user.id).then(res => {
-            if(res.status === 200) {
+            if (res.status === 200) {
                 setGoals(res.data);
             }
         });
@@ -30,9 +31,14 @@ function App() {
 
     // goals
     useEffect(() => {
-        console.log("GOALS: ", goals);
     }, [goals]);
 
+    useEffect(() => {
+        if(!goals || !selectedGoalId) {
+            return;
+        }
+        setSelectedGoalTitle(goals[selectedGoalId - 1].title);
+    }, [selectedGoalId]);
 
     return (
         <div className="App">
@@ -40,11 +46,14 @@ function App() {
                 setUser={setUser}
             />
             <div id="Content">
-                <Timer time={DEFAULT_TIME}/>
+                <Timer time={DEFAULT_TIME} selectedGoalTitle={selectedGoalTitle}/>
                 <hr/>
                 <Goal/>
                 <hr/>
-                <Task goals={goals}/>
+                <Task
+                    goals={goals}
+                    setSelectedGoalId={setSelectedGoalId}
+                />
             </div>
         </div>
     );

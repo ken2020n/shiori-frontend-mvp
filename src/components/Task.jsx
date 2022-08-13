@@ -3,10 +3,12 @@ import {Box, List, ListItemButton, ListItemText, IconButton, DeleteIcon} from '@
 
 require('./Task.css');
 
-export default function Task({goals}) {
+export default function Task({goals, setSelectedGoalId}) {
+
     const [selectedIndex, setSelectedIndex] = useState(0);
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
+        setSelectedGoalId(index);
     };
 
     return goals ? (

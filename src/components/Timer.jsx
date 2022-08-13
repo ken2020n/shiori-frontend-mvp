@@ -3,7 +3,9 @@ import {useTimer} from 'react-timer-hook';
 import {Alert, IconButton, Collapse} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function Timer({time}) {
+export default function Timer({time, selectedGoalTitle}) {
+
+    console.log(selectedGoalTitle);
 
     const [open, setOpen] = React.useState(true);
 
@@ -66,7 +68,7 @@ export default function Timer({time}) {
             </Collapse>
 
             <div style={{textAlign: 'center'}}>
-                <h1>react-timer-hook </h1>
+                <h1>{selectedGoalTitle}</h1>
                 <div style={{fontSize: '100px'}}>
                     <span>{minutes}</span>:<span>{seconds}</span>
                 </div>
