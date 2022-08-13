@@ -5,18 +5,20 @@ import CloseIcon from '@mui/icons-material/Close';
 
 export default function Timer({time, selectedGoalTitle}) {
 
-    console.log(selectedGoalTitle);
 
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
 
     const timeInSeconds = parseInt(time)
     const date = new Date();
     date.setSeconds(date.getSeconds() + timeInSeconds);
     const expiryTimestamp = date;
 
-    const [reload, setReload] = useState(false);
+    const [reload, setReload] = useState();
 
     useEffect(() => {
+        if(!reload) {
+            return;
+        }
         console.log("Timer reload")
         const date = new Date();
         date.setSeconds(date.getSeconds() + time);
@@ -37,7 +39,8 @@ export default function Timer({time, selectedGoalTitle}) {
         restart,
     } = useTimer({
         expiryTimestamp,
-        onExpire: () => handleTimeExpired()
+        onExpire: () => handleTimeExpired(),
+        autoStart: false
     });
 
     const handleTimeExpired = () => {
@@ -77,7 +80,9 @@ export default function Timer({time, selectedGoalTitle}) {
                 <button onClick={pause}>Pause</button>
                 <button onClick={resume}>Resume</button>
                 <button onClick={() => {
-                    // Restarts to 5 minutes timer
+
+                    setOpen(false);
+
                     const date = new Date();
                     date.setSeconds(date.getSeconds() + time);
                     restart(date)
