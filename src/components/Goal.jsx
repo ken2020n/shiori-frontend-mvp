@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Stack, Button, Icon, TextField} from '@mui/material';
 import {
     createGoal, getGoals
@@ -7,6 +7,8 @@ import {
 require('./Goal.css');
 
 export default function Goal({user, setGoals}) {
+
+    const inputRef = useRef(null);
 
     const [goalTitle, setGoalTitle] = useState("");
     const handleCreateGoal = () => {
@@ -37,6 +39,7 @@ export default function Goal({user, setGoals}) {
                     fullWidth
                     id=""
                     label="Goal"
+                    inputRef={inputRef}
                     variant="outlined"
                     onChange={(event) => setGoalTitle(event.target.value)}
                 />

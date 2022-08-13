@@ -37,7 +37,10 @@ function App() {
         if (!goals || !selectedGoalId) {
             return;
         }
-        setSelectedGoalTitle(goals[selectedGoalId - 1].title);
+        console.log(goals);
+        console.log(selectedGoalId);
+        let goalTitle = goals.filter(el => el.goal_id === selectedGoalId);
+        setSelectedGoalTitle(goalTitle);
     }, [selectedGoalId]);
 
     return (
@@ -50,7 +53,7 @@ function App() {
                 <Timer
                     time={DEFAULT_TIME}
                     selectedGoalId={selectedGoalId}
-                    selectedGoalTitle={selectedGoalTitle}
+                    // selectedGoalTitle={selectedGoalTitle}
                 />
                 <hr/>
                 <Goal
@@ -61,6 +64,8 @@ function App() {
                 <Task
                     goals={goals}
                     setSelectedGoalId={setSelectedGoalId}
+                    user={user}
+                    setGoals={setGoals}
                 />
             </div>
         </div>

@@ -9,7 +9,11 @@ import {
 
 require('./Timer.css');
 
-export default function Timer({time, selectedGoalId, selectedGoalTitle}) {
+export default function Timer({
+                                  time,
+                                  selectedGoalId,
+                                  selectedGoalTitle
+                              }) {
 
     const [open, setOpen] = React.useState(false);
 
@@ -52,7 +56,7 @@ export default function Timer({time, selectedGoalId, selectedGoalTitle}) {
         setOpen(true);
         const createTaskResult = createTask(selectedGoalId, selectedGoalTitle, time);
         createTaskResult.then((res) => {
-            if(res.status) {
+            if (res.status) {
                 console.log("200 OK");
             } else {
                 console.log(res.status);

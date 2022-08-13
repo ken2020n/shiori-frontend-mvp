@@ -36,6 +36,14 @@ const getGoals = async (userId) => {
     }
 }
 
+const deleteGoal = async (goalId) => {
+    try {
+        return await axios.delete(`${API_HOST_URL}/goal/delete/${goalId}`)
+    } catch (err) {
+        return err.response;
+    }
+}
+
 const createTask = async (goalId, title, seconds) => {
     try {
         return await axios.post(`${API_HOST_URL}/task/create`, {
@@ -54,5 +62,6 @@ export {
     login,
     createGoal,
     getGoals,
-    createTask
+    createTask,
+    deleteGoal
 };
