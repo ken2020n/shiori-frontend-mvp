@@ -7,6 +7,8 @@ import {
     createTask
 } from "../api/api"
 
+require('./Timer.css');
+
 export default function Timer({time, selectedGoalId, selectedGoalTitle}) {
 
     const [open, setOpen] = React.useState(false);
@@ -81,7 +83,7 @@ export default function Timer({time, selectedGoalId, selectedGoalTitle}) {
             </Collapse>
 
             <div style={{textAlign: 'center'}}>
-                <h1>{selectedGoalTitle}</h1>
+                <h1 id="GoalTitle">{selectedGoalTitle}</h1>
                 <div style={{fontSize: '100px'}}>
                     <span>{minutes}</span>:<span>{seconds}</span>
                 </div>
