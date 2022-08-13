@@ -3,8 +3,11 @@ import {useTimer} from 'react-timer-hook';
 import {Alert, Button, Stack, IconButton, Collapse} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function Timer({time, selectedGoalTitle}) {
+import {
+    createTask
+} from "../api/api"
 
+export default function Timer({time, selectedGoalId, selectedGoalTitle}) {
 
     const [open, setOpen] = React.useState(false);
 
@@ -26,7 +29,6 @@ export default function Timer({time, selectedGoalTitle}) {
         setReload(false);
     }, [reload]);
 
-
     const {
         seconds,
         minutes,
@@ -46,6 +48,14 @@ export default function Timer({time, selectedGoalTitle}) {
     const handleTimeExpired = () => {
         console.log("onExpired")
         setOpen(true);
+        const createTaskResult = createTask(selectedGoalId, selectedGoalTitle, time);
+        createTaskResult.then((res) => {
+            if(res.status) {
+                console.log("200 OK");
+            } else {
+                console.log(res.status);
+            }
+        })
     }
 
     return (
@@ -66,7 +76,7 @@ export default function Timer({time, selectedGoalTitle}) {
                     }
                     sx={{mb: 2}}
                 >
-                    Close me!
+                    Time Expired!
                 </Alert>
             </Collapse>
 
@@ -80,8 +90,7 @@ export default function Timer({time, selectedGoalTitle}) {
                 {/*<p>{isRunning ? : null}</p>*/}
                 <div>
                     <Stack spacing={2} direction="row" justifyContent="center">
-                        <Button variant="contained" onClick={pause}>Pause</Button>
-                        <Button variant="contained" onClick={resume}>Resume</Button>
+
                         <Button variant="contained"
                                 onClick={() => {
                                     setOpen(false);
@@ -89,8 +98,10 @@ export default function Timer({time, selectedGoalTitle}) {
                                     const date = new Date();
                                     date.setSeconds(date.getSeconds() + time);
                                     restart(date)
-                                }}>Restart
+                                }}>Start
                         </Button>
+                        <Button variant="contained" onClick={pause}>Pause</Button>
+                        <Button variant="contained" onClick={resume}>Resume</Button>
                     </Stack>
                 </div>
             </div>

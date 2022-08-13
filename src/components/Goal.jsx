@@ -16,11 +16,16 @@ export default function Goal({user, setGoals}) {
 
         console.log("user: ", user);
         console.log("goal: ", goalTitle);
+        console.log("handleCreateGoal");
 
         createGoal(user.id, goalTitle).then(res => {
+            console.log("GOGOGO");
             if (res.status === 200) {
-                console.log(res.data);
-                setGoals(res.data);
+                getGoals(user.id).then(res => {
+                    if (res.status === 200) {
+                        setGoals(res.data);
+                    }
+                });
             }
         });
     }

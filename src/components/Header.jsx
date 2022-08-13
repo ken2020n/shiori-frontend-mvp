@@ -14,28 +14,24 @@ import {
 
 require('./Header.css');
 
-export default function Header({setUser}) {
+export default function Header({user, setUser}) {
 
     // TextField
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     // Alert
-    const [open2, setOpen] = React.useState(true);
+    const [open2, setOpen] = React.useState(false);
+
+    // Login Menu Display
+
 
     const handleMenuClick = () => {
         console.log("menu click");
     };
 
     const handleLogin = () => {
-        console.log("login");
-        console.log("email: ", email);
-        console.log("password: ", password);
-
         getLoginResult();
-
-        // register or error
-        // setOpen(true);
     };
 
     // API
@@ -46,6 +42,7 @@ export default function Header({setUser}) {
             setOpen(false);
 
         } else {
+            setUser(null);
             setOpen(true);
         }
     };
@@ -104,6 +101,7 @@ export default function Header({setUser}) {
                     <TextField
                         // id="text-field-password"
                         label="Password"
+                        type="password"
                         variant="outlined"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}

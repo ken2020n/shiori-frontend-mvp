@@ -25,7 +25,6 @@ const createGoal = async (userId, title) => {
         });
     } catch (err) {
         return err.response;
-
     }
 }
 
@@ -37,9 +36,23 @@ const getGoals = async (userId) => {
     }
 }
 
+const createTask = async (goalId, title, seconds) => {
+    try {
+        return await axios.post(`${API_HOST_URL}/task/create`, {
+            "goal_id": goalId,
+            "title": title,
+            "seconds": seconds
+        });
+    } catch (err) {
+        return err.response;
+
+    }
+}
+
 export {
     // register,
     login,
     createGoal,
-    getGoals
+    getGoals,
+    createTask
 };

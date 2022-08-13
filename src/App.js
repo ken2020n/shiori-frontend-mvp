@@ -34,7 +34,7 @@ function App() {
     }, [goals]);
 
     useEffect(() => {
-        if(!goals || !selectedGoalId) {
+        if (!goals || !selectedGoalId) {
             return;
         }
         setSelectedGoalTitle(goals[selectedGoalId - 1].title);
@@ -43,10 +43,15 @@ function App() {
     return (
         <div className="App">
             <Header
+                user={user}
                 setUser={setUser}
             />
             <div id="Content">
-                <Timer time={DEFAULT_TIME} selectedGoalTitle={selectedGoalTitle}/>
+                <Timer
+                    time={DEFAULT_TIME}
+                    selectedGoalId={selectedGoalId}
+                    selectedGoalTitle={selectedGoalTitle}
+                />
                 <hr/>
                 <Goal
                     user={user}
