@@ -12,6 +12,7 @@ export default function Goal({user, setGoals}) {
 
     const [goalTitle, setGoalTitle] = useState("");
     const handleCreateGoal = () => {
+        inputRef.current.value = "";
         if(!user || !goalTitle) {
             return;
         }
