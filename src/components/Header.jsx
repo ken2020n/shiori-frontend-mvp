@@ -12,7 +12,7 @@ import {
 
 require('./Header.css');
 
-export default function Header({user, setUser}) {
+export default function Header({user, setUser, setTimerTime}) {
 
     // TextField
     const [email, setEmail] = useState("");
@@ -22,10 +22,9 @@ export default function Header({user, setUser}) {
     const [open2, setOpen] = React.useState(false);
 
     // Login Menu Display
-
-
     const handleMenuClick = () => {
         console.log("menu click");
+        setTimerTime(5);
     };
 
     const handleLogin = () => {

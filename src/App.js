@@ -10,7 +10,7 @@ import {
 
 function App() {
     // const DEFAULT_TIME = 25 * 60;
-    const DEFAULT_TIME = 3;
+    const DEFAULT_TIME = 5;
 
     const [user, setUser] = useState();
     const [goals, setGoals] = useState();

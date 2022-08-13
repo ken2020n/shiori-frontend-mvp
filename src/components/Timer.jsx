@@ -13,7 +13,7 @@ export default function Timer({
                                   time,
                                   selectedGoalId,
                                   goals,
-                                  selectedGoalTitle
+                                  selectedGoalTitle,
                               }) {
 
     const [open, setOpen] = React.useState(false);
