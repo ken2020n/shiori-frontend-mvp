@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const API_HOST_URL = "http://localhost:3000";
+// const API_HOST_URL = "http://localhost:3000";
+const API_HOST_URL = "https://shiori-mvp.herokuapp.com";
 
 const login = async (email, password) => {
+    console.log("❤️", API_HOST_URL);
     try {
         return await axios.post(`${API_HOST_URL}/user/login`, {
             "email": email,
